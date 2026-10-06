@@ -1,0 +1,118 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: #ffffff; font-family: 'Inter', sans-serif; }
+
+.sticky-nav {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sticky-nav h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-transform: lowercase;
+}
+
+/* --- Hamburger Logic --- */
+.menu-toggle { display: none; }
+
+.hamburger {
+    position: absolute;
+    left: 30px;
+    cursor: pointer;
+    z-index: 1002;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* Menu Overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    z-index: 1001;
+}
+
+.menu-overlay ul {
+    list-style: none;
+    text-align: center;
+}
+
+.menu-overlay ul li {
+    margin: 25px 0;
+}
+
+.menu-overlay ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    transition: opacity 0.3s;
+}
+
+.menu-overlay ul li a:hover {
+    opacity: 0.5;
+}
+
+#menu-toggle:checked ~ .menu-overlay {
+    left: 0;
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+#menu-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+#menu-toggle:checked + .hamburger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Grid adjustment */
+.menu-grid {
+    max-width: 1200px;
+    margin: 140px auto 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 60px 40px;
+    padding: 0 20px;
+}
+
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #f9f9f9;
+    border: 1px solid #eeeeee;
+}
+
+.description {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-left: 2px solid #000000;
+    padding-left: 15px;
+}
